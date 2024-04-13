@@ -2,7 +2,6 @@ package co.edu.escuelaing.cvds.lab7.controller;
 
 import co.edu.escuelaing.cvds.lab7.model.Product;
 import co.edu.escuelaing.cvds.lab7.service.ProductService;
-import co.edu.escuelaing.cvds.lab7.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +31,8 @@ public class ProductController {
     }
 
     @PutMapping("/update/{id}")
-    public Product updateProduct(@PathVariable String id, @RequestBody Product updatedProduct) {
-        return productService.updateProduct(updatedProduct);
+    public Product updateProduct(@PathVariable Integer id, @RequestBody Product updatedProduct) {
+        return productService.updateProduct(id, updatedProduct);
     }
 
     @DeleteMapping("/delete/{id}")
