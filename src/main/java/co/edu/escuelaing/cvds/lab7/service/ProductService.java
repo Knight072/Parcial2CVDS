@@ -29,20 +29,20 @@ public class ProductService {
 
     public Product updateProduct(Integer id, Product newProduct){
         return productRepository.findById(id)
-            .map(product -> {
-                product.setProductId(newProduct.getProductId());
-                product.setName(newProduct.getName());
-                product.setDescription(newProduct.getDescription());
-                product.setCategory(newProduct.getCategory());
-                product.setRating(newProduct.getRating());
-                product.setPrice(newProduct.getPrice());
-                product.setQuantity(newProduct.getQuantity());
-        return productRepository.save(newProduct);
-    })
-            .orElseGet(() -> {
-        newProduct.setProductId(id);
-        return productRepository.save(newProduct);
-    });
+                .map(product -> {
+                    product.setProductId(newProduct.getProductId());
+                    product.setName(newProduct.getName());
+                    product.setDescription(newProduct.getDescription());
+                    product.setCategory(newProduct.getCategory());
+                    product.setRating(newProduct.getRating());
+                    product.setPrice(newProduct.getPrice());
+                    product.setQuantity(newProduct.getQuantity());
+                    return productRepository.save(newProduct);
+                })
+                .orElseGet(() -> {
+                    newProduct.setProductId(id);
+                    return productRepository.save(newProduct);
+                });
     }
     public void deleteProduct(Integer id){
         productRepository.deleteById(id);
